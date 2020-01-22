@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="dtn" translate="label" sortOrder="10">
+            <label>Daily Reports</label>
+        </tab>
+        <section id="report" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Reports Product Sold</label>
+            <tab>dtn</tab>
+            <resource>Thai_Reports::dailyMail_config</resource>
+            <group id="configurable_cron" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Cron Settings</label>
+                <field id="enable_module" translate="label" sortOrder="1" type="select" showInDefault="1" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="frequency" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Frequency</label>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Cron\Model\Config\Source\Frequency</source_model>
+                    <backend_model>Thai\Reports\Model\CronConfig</backend_model>
+                </field>
+                <field id="time" translate="label comment" sortOrder="3" type="time" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Report Time</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="auth" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Authentication method</label>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Smtpauth</source_model>
+                </field>
+                <field id="protocol" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Protocol Type</label>
+                    <source_model>Thai\Reports\Model\ProtocolConfig</source_model>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="smtphost" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SMTP Host</label>
+                    <source_model>Thai\Reports\Model\HostConfig</source_model>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="smtpport" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SMTP Port</label>
+                    <validate>required-entry</validate>
+                    <source_model>Thai\Reports\Model\PortConfig</source_model>
+                </field>
+                <field id="username" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send From Email</label>
+                    <validate>required-entry validate-email</validate>
+                </field>
+                <field id="password" translate="label" type="obscure" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Password App</label>
+                    <validate>required-entry</validate>
+                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="reciever_mail" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>To Email: </label>
+                    <validate>required-entry validate-email</validate>
+                </field>
+                <field id="cc_to" translate="label comment" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cc To: </label>
+                    <validate>required-entry validate-email</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
