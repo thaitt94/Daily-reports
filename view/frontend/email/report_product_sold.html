@@ -1,3 +1,6 @@
-{{template config_path="design/email/header_template"}}
-<p>Hello</p>
-{{template config_path="design/email/footer_template"}}
+<h3>
+    {{trans "Dear customer,"}}
+</h3>
+<h3>
+    {{trans "Please check the attached file bellow for a report of products sold within 24 hours of "}}{{var time}}{{trans " yesterday."}}
+</h3>

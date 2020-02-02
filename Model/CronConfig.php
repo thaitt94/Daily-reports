@@ -30,7 +30,6 @@ class CronConfig extends \Magento\Framework\App\Config\Value
     {
         $time = $this->getData('groups/configurable_cron/fields/time/value');
         $frequency = $this->getData('groups/configurable_cron/fields/frequency/value');
- 
         $cronExprArray = [
             intval($time[1]), //Minute
             intval($time[0]), //Hour
@@ -59,7 +58,6 @@ class CronConfig extends \Magento\Framework\App\Config\Value
         } catch (\Exception $e) {
             throw new \Exception(__('We can\'t save the cron expression.'));
         }
- 
         return parent::afterSave();
     }
 }
